@@ -1,0 +1,29 @@
+{% extends 'timecard/base.html' %}
+
+{% block Title %}
+<title>Contract Rates - Add New</title>
+{% endblock Title %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+<h1>Contract Rates - Add New</h1>
+
+<form method="POST">
+        {%csrf_token%}
+        <h3>Rates Header</h3>
+        {{form1.as_p}}
+
+        {% if form2 %}
+        <h3>Rate Details</h3>
+        {{form2.as_p}}
+        {% endif %}
+
+        {% if form3 %}
+        <h3>Rate Unit </h3>
+        {{form3.as_p}}
+        {% endif %}
+
+    <input type="submit" value="Save">
+</form>
+
+{% endblock content %}

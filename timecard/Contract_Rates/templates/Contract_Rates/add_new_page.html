@@ -1,0 +1,14 @@
+{% extends 'timecard/base.html' %}
+
+{% block Title %}
+<title>Contract Rates - Add New</title>
+{% endblock Title %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+<h1>Contract Rates - Add New</h1>
+
+<a style="float:left;margin-left:50px" href="{% url 'add_new_contract_rates' %}">
+    <button>Add New Contract Rate</button></a>
+
+{% endblock content %}

@@ -1,0 +1,38 @@
+{% extends 'timecard/base.html' %}
+
+{% block Title %}
+<title>Restoration Project Expense Class and Billing Code</title>
+{% endblock Title %}
+
+{% block content %}
+<h1>Restoration Project Expense Class and Billing Code</h1>
+
+<a style="float: right" href="{% url 'add_new_project_expense' %}">
+    <button>Add New</button>
+</a>
+
+
+<form method="post">
+    {% csrf_token %}
+    <table class="container-fluid">
+        <tr>
+            <th>Project Expense Class</th>
+            <th>Billing Code</th>
+            <th>Default Rate/Hr.</th>
+            <th>Active</th>
+        </tr>
+
+        {% for obj in object_list %}
+        <tr>
+            <th>{{ obj.expense_code }}</th>
+            <th>{{ obj.expense_billing_code }}</th>
+            <th>{{ obj.expense_default_rates }}</th>
+            <th>{{ obj.expense_active }}</th>
+            <th><a href="#">Edit</a></th>
+            <th><a href="#">Deactivate</a></th>
+        </tr>
+        {% endfor%}
+
+    </table>
+</form>
+{% endblock content %}

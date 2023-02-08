@@ -1,0 +1,18 @@
+{% extends 'timecard/base.html' %}
+
+{% block Title %}
+<title>Add New Equipment</title>
+{% endblock Title %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+<h1>Restoration Equipment class and Billing Code - Add New</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <br>
+    {{ form|crispy }}
+    <input type="button" value="Clear">
+    <input type="submit" value="Save">
+</form>
+{% endblock content %}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      body {
+        font-family: "Lato", sans-serif;
+      }
+
+      .sidenav {
+        height:100%;
+        width: 400px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        overflow-x: hidden;
+        background-color :	#AA0441;
+        transition: 0.5s;
+        padding-top: 60px;
+        font-size : 27px;
+        color : white
+      }
+
+      .sidenav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 400px;
+        background-color: #544d4d;
+      }
+
+      .sidenav li a {
+        padding: 8px 8px 8px 32px;
+        border : 1px solid white;
+        text-decoration: none;
+        font-size: 25px;
+        color: black;
+        display: block;
+        transition: 0.3s;
+      }
+
+      .sidenav li a:hover {
+        background color : black;
+        color: white;
+      }
+
+      .sidenav p {background-color =red;
+                    margin: 0;
+                    padding: 0;
+                    width: 400px;
+                    background-color: #3F2C3F;
+                    }
+
+      @media screen and (max-height: 450px) {
+        .sidenav {padding-top: 15px;}
+        .sidenav a {font-size: 18px;}
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sidenav" >
+      <p>Admin settings</p>
+
+{% if user.is_authenticated %}
+
+      <a class="nav-link active" href="{% url 'useradmin_logout'%}">Logout</a>
+  {% else %}
+      <a class="nav-link active" href="{% url 'useradmin_login'%}">Login</a>
+
+  {% endif%}
+      <ul>
+        {% if user.is_authenticated %}
+          <li> <a class="dropdown-item" href="{% url 'show_lc_list' %}">Labor Code Maintenance</a></li>
+          <li><a href="{% url 'show_sc_list' %}">Supplies Code Maintenance</a></li>
+          <li><a href="{% url 'show_equipment_list'%}">Equipment Code Maintenance</a></li>
+          <li><a href="{% url 'show_project_expense_list'%}">Project Expense Code Maintenance</a></li>
+          <li><a href="{% url 'show_user_list' %}">User Maintenance</a></li>
+          <li><a href="{% url 'show_project_list' %}">Project Maintenance</a></li>
+        {% else %}
+          <li><a role="link" aria-disabled="true"> Labor Code Maintenance </a></li>
+          <li><a role="link" aria-disabled="true"> Supplies Code Maintenance </a></li>
+          <li><a role="link" aria-disabled="true"> Equipment  Code Maintenance </a></li>
+          <li><a role="link" aria-disabled="true"> Project Expense Code Maintenance </a></li>
+          <li><a role="link" aria-disabled="true"> User Maintenance </a></li>
+          <li><a role="link" aria-disabled="true"> Project Maintenance </a></li>
+            {% endif %}
+
+
+      </ul>
+
+      <p>Sub-Contractor Settings</p>
+      <ul>
+        {% if user.is_authenticated %}
+        <li id ="subcontract"><a href="{% url 'add_new_contract_rates' %}">Contract Rates</a></li>
+        {%else%}
+         <li><a role="link" aria-disabled="true"> Contract Rates </a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </body>
+</html>
+
